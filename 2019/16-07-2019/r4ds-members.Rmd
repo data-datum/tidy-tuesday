@@ -1,0 +1,41 @@
+---
+title: "r4ds_members"
+author: "roxana"
+date: "16 de julio de 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#r4ds members
+
+
+```{r warnings=FALSE}
+r4ds_members <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-16/r4ds_members.csv")
+head(r4ds_members)
+```
+
+
+#time series plot total members
+```{r warning=FALSE, message=FALSE}
+library(ggplot2)
+library(plotly)
+tot_mem <- ggplot(r4ds_members, aes(x=date)) + 
+  geom_line(aes(y = total_membership), color = "darkred")
+plotly::ggplotly(tot_mem)
+```
+
+# weekly and daily active members
+
+```{r warning=FALSE, message=FALSE}
+day_week <- ggplot(r4ds_members, aes(x=date)) + 
+  geom_line(aes(y = daily_active_members), color="steelblue")+
+  geom_line(aes(y= daily_members_posting_messages), color="red4")+
+  geom_line(aes(y = weekly_active_members), color="navyblue")+
+  geom_line(aes(y= weekly_members_posting_messages), color="tomato4")
+plotly::ggplotly(day_week)
+```
+
+
