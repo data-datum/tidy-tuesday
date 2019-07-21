@@ -1,4 +1,4 @@
 # R4DS membership 
 
-## Data Visualization with ggplot, Plotly and gganimate
+## Data Visualization with ggplot2, Plotly and gganimate
 
